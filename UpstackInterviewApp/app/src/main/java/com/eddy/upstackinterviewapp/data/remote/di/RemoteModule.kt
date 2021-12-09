@@ -1,5 +1,7 @@
 package com.eddy.upstackinterviewapp.data.remote.di
 
+import com.eddy.upstackinterviewapp.data.remote.datasource.GitHubRepositoryRemoteDataSource
+import com.eddy.upstackinterviewapp.data.remote.datasource.GitHupRepositoriesRemoteDataSourceImpl
 import com.eddy.upstackinterviewapp.data.remote.interceptor.BasicAuthInterceptor
 import com.eddy.upstackinterviewapp.data.remote.network.GitHubApiClient
 import com.eddy.upstackinterviewapp.data.remote.network.baseUrl
@@ -41,5 +43,9 @@ val remoteModule = module {
 
     single {
         get<Retrofit>().create(GitHubApiClient::class.java)
+    }
+
+    single<GitHubRepositoryRemoteDataSource> {
+        GitHupRepositoriesRemoteDataSourceImpl(get())
     }
 }
