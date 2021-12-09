@@ -1,5 +1,6 @@
 package com.eddy.upstackinterviewapp.data.remote.datasource
 
+import com.eddy.upstackinterviewapp.data.models.LoginResponse
 import com.eddy.upstackinterviewapp.data.models.RepositoryResponse
 import com.eddy.upstackinterviewapp.data.remote.network.GitHubApiClient
 import retrofit2.Response
@@ -10,4 +11,6 @@ class GitHupRepositoriesRemoteDataSourceImpl(
 
     override suspend fun getUserRepo(): Response<List<RepositoryResponse>> =
         apiClient.getUserRepositories()
+
+    override suspend fun login(): Response<LoginResponse> = apiClient.login()
 }

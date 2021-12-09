@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.eddy.upstackinterviewapp.R
 import com.eddy.upstackinterviewapp.databinding.FragmentFirstBinding
@@ -37,7 +38,16 @@ class FirstFragment : Fragment() {
 
         binding.buttonFirst.setOnClickListener {
             viewModel.storeCredentials(binding.pass.text.toString(), binding.username.toString())
+            viewModel.login()
+        }
+
+        viewModel.listData.observe(viewLifecycleOwner) {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        }
+
+        viewModel.errorMessage.observe(viewLifecycleOwner) {
+            viewModel.storeCredentials("", "")
+            Toast.makeText(requireContext(), "Wrong credentials", Toast.LENGTH_SHORT).show()
         }
     }
 

@@ -1,8 +1,11 @@
 package com.eddy.upstackinterviewapp.data.repository
 
+import com.eddy.upstackinterviewapp.data.entity.LoginEntity
 import com.eddy.upstackinterviewapp.data.entity.RepositoryEntity
 import com.eddy.upstackinterviewapp.data.local.datasource.LocalDataSource
+import com.eddy.upstackinterviewapp.data.mapper.loginToEntity
 import com.eddy.upstackinterviewapp.data.mapper.repositoryToEntity
+import com.eddy.upstackinterviewapp.data.models.LoginResponse
 import com.eddy.upstackinterviewapp.data.remote.datasource.GitHubRepositoryRemoteDataSource
 import com.eddy.upstackinterviewapp.data.repository.utils.Resource
 import com.eddy.upstackinterviewapp.data.repository.utils.safeApiCall
@@ -21,4 +24,12 @@ internal class RepositoryImpl(
             apiCall = { remoteDataSource.getUserRepo() },
             mapper = ::repositoryToEntity
         )
+
+    override fun login(): Flow<Resource<LoginEntity>> =
+        safeApiCall(
+            apiCall = {remoteDataSource.login() },
+            mapper = ::loginToEntity
+        )
+
+
 }
