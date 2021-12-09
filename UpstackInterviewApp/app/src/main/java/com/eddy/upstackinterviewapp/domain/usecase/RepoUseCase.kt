@@ -6,4 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface RepoUseCase {
     fun getUserRepos(): Flow<Resource<List<RepositoryEntity>>>
+    fun clearData()
 }

@@ -8,4 +8,5 @@ interface LoginUseCase {
     fun setToken(token: String)
     fun setUsername(username: String)
     fun login(): kotlinx.coroutines.flow.Flow<Resource<LoginEntity>>
+    fun isLoggedIn(): Boolean
 }

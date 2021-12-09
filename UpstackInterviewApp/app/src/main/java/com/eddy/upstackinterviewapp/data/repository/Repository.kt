@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.Flow
 interface Repository {
     fun setUsername(username: String)
     fun setToken(token: String)
+    fun getToken(): String
     fun getUserRepos(): Flow<Resource<List<RepositoryEntity>>>
     fun login(): Flow<Resource<LoginEntity>>
 }

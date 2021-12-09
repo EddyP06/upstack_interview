@@ -18,6 +18,9 @@ internal class RepositoryImpl(
     override fun setUsername(username: String) = localDataSource.setUsername(username)
 
     override fun setToken(token: String) = localDataSource.setToken(token)
+    override fun getToken(): String {
+        return localDataSource.getToken()
+    }
 
     override fun getUserRepos(): Flow<Resource<List<RepositoryEntity>>> =
         safeApiCall(
@@ -30,6 +33,8 @@ internal class RepositoryImpl(
             apiCall = {remoteDataSource.login() },
             mapper = ::loginToEntity
         )
+
+
 
 
 }

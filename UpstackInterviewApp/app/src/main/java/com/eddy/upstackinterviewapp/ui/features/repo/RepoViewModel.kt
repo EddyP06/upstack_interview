@@ -40,4 +40,6 @@ class RepoViewModel(
             .flowOn(dispatchers.mainDispatchers)
             .launchIn(viewModelScope)
     }
+
+    fun logout() = useCase.clearData()
 }

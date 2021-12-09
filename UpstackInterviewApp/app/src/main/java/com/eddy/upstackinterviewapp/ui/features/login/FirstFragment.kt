@@ -36,6 +36,10 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (viewModel.isLoggedIn()) {
+            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        }
+
         binding.buttonFirst.setOnClickListener {
             viewModel.storeCredentials(binding.pass.text.toString(), binding.username.toString())
             viewModel.login()

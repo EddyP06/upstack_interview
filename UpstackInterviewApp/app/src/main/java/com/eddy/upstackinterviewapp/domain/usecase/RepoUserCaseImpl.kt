@@ -9,5 +9,9 @@ class RepoUserCaseImpl(
     private val repository: Repository
 ) : RepoUseCase {
     override fun getUserRepos(): Flow<Resource<List<RepositoryEntity>>> = repository.getUserRepos()
+    override fun clearData() {
+        repository.setToken("")
+        repository.setUsername("")
+    }
 
 }

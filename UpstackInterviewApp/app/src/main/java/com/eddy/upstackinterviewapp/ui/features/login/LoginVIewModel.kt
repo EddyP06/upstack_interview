@@ -47,4 +47,6 @@ class LoginVIewModel(
             .flowOn(dispatchers.mainDispatchers)
             .launchIn(viewModelScope)
     }
+
+    fun isLoggedIn() = useCase.isLoggedIn()
 }

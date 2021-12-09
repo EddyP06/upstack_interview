@@ -53,6 +53,7 @@ class SecondFragment : Fragment() {
         }
 
         binding.buttonSecond.setOnClickListener {
+            viewModel.logout()
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
     }

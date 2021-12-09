@@ -19,4 +19,8 @@ class LoginUseCaseImpl(
     override fun login(): Flow<Resource<LoginEntity>> =
         repository.login()
 
+    override fun isLoggedIn(): Boolean {
+        return repository.getToken().isNotBlank()
+    }
+
 }
