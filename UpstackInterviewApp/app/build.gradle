@@ -1,0 +1,87 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "com.eddy.upstackinterviewapp"
+        minSdk 23
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField "String", "BASE_URL", "\"https://api.github.com/\""
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_URL", "\"https://api.github.com/\""
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+
+    implementation kotlinDependencies.kotlinStdlib
+    implementation kotlinDependencies.kotlinCore
+    implementation kotlinDependencies.kotlinCollection
+
+    implementation androidExtDependencies.androidFragment
+    implementation androidExtDependencies.androidLifecycle
+    implementation androidExtDependencies.androidLifecycleLiveData
+    implementation androidExtDependencies.androidNavigationExtRuntime
+    implementation androidExtDependencies.androidNavigationExtFragment
+    implementation androidExtDependencies.androidNavigationExtUi
+    implementation androidExtDependencies.androidStreams
+    implementation androidExtDependencies.androidViewModelExt
+    implementation androidExtDependencies.androidActivityExt
+    implementation androidExtDependencies.defaultLifecyle
+
+    implementation retrofitDependencies.retrofit
+    implementation retrofitDependencies.gsonConverter
+    implementation retrofitDependencies.okhttpLoger
+    implementation retrofitDependencies.okhttp
+
+    implementation koinDependencies.koinCore
+    implementation koinDependencies.koinAndroid
+
+    implementation androidDependencies.androidAppCompat
+    implementation androidDependencies.androidMaterial
+    implementation androidDependencies.androidConstraintLayout
+    implementation androidDependencies.androidCardView
+    implementation androidDependencies.androidRecyclerView
+    implementation androidDependencies.navigationCompose
+    implementation androidDependencies.navigationComposeDynemicFeature
+    implementation androidDependencies.legacySupportAndroidX
+    implementation androidDependencies.coroutinesAndroid
+    implementation androidDependencies.coroutinesAndroidCore
+
+//    implementation 'androidx.core:core-ktx:1.6.0'
+//    implementation 'androidx.appcompat:appcompat:1.3.1'
+//    implementation 'com.google.android.material:material:1.4.0'
+//    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+//    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+//    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+}
